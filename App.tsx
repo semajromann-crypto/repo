@@ -11,6 +11,7 @@ import LoadingSkeleton from './components/LoadingSkeleton';
 import AsciiArtDisplay from './components/AsciiArtDisplay';
 import Breadcrumbs from './components/Breadcrumbs';
 import TextToSpeech from './components/TextToSpeech';
+import SaveToSheets from './components/SaveToSheets';
 
 // A curated list of "banger" words and phrases for the random button.
 const PREDEFINED_WORDS = [
@@ -223,6 +224,16 @@ const App: React.FC = () => {
               <p>Content could not be generated.</p>
             </div>
           )}
+
+          {/* Integration: Save to Google Sheets */}
+          {content.length > 0 && !error && (
+            <SaveToSheets 
+              topic={currentTopic}
+              content={content}
+              isLoadingContent={isLoading}
+            />
+          )}
+
         </div>
       </main>
 
